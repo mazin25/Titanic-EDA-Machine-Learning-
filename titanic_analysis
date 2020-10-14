@@ -59,10 +59,6 @@ library(stringr)
              mutate(Age =ifelse(is.na(Age) & Title == "Master", floor(runif(1, min=0, max=14)), Age))
              
           #Imputing the other missing Age based on random distribution
-           age_non_na <- data %>%
-             filter(!is.na(Age))
-           
-         
           data <- data %>%
                  rowwise() %>%
                  mutate(Age = ifelse(is.na(Age),floor(runif(1, min=15, max=80)), Age))
