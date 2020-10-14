@@ -62,9 +62,10 @@ library(stringr)
            age_non_na <- data %>%
              filter(!is.na(Age))
            
+         
           data <- data %>%
                  rowwise() %>%
-                 mutate(Age = ifelse(is.na(Age),as.integer(rnorm(1, mean = mean(age_non_na$Age), sd = sd(age_non_na$Age))), Age))
+                 mutate(Age = ifelse(is.na(Age),floor(runif(1, min=15, max=80)), Age))
         #Fare col
           #Imputing Fare col
             #Explore the Fare_per_person for each Pclass
